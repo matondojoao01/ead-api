@@ -10,7 +10,7 @@ class Course extends Model
 {
     use HasFactory, UuidTrait;
 
-    protected $table="courses";
-
-    protected $filbale=['name','description','image'];
+    public $incrementing = false;
+    protected $keyType = 'uuid';
+    protected $filbale = ['name', 'description', 'image'];
 }
