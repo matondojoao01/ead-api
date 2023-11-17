@@ -14,6 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $courses = \App\Models\Course::factory()->count(10)->create();
+
+        foreach ($courses as $course) {
+            $course->modules()->saveMany(\App\Models\Module::factory()->count(5)->make());
+        }
     }
 }

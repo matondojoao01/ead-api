@@ -12,5 +12,16 @@ class Course extends Model
 
     public $incrementing = false;
     protected $keyType = 'uuid';
-    protected $filbale = ['name', 'description', 'image'];
+    protected $fillable = ['name', 'description', 'image'];
+    protected $table = 'courses';
+
+    /**
+     * Get all of the modules for the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function modules()
+    {
+        return $this->hasMany(Module::class);
+    }
 }
