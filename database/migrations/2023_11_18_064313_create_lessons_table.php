@@ -17,9 +17,9 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('module_id')->nullable(false);
             $table->string('name')->unique();
-            $table->string('url')->unique();
             $table->longText('description')->nullable();
             $table->string('video')->unique();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

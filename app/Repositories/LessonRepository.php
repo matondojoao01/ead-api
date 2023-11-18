@@ -18,8 +18,8 @@ class LessonRepository
         return  $this->entity->where('module_id', $identify)->get();
     }
 
-    public function getLessonById($lessonId)
+    public function getLessonBySlug(string $slug)
     {
-        return $this->entity->findOrFail($lessonId);
+        return  $this->entity->where('slug',$slug)->first();
     }
 }

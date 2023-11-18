@@ -17,7 +17,7 @@ class CourseRepository
         return  $this->entity->get();
     }
 
-    public function getCourse(string $identify){
-        return  $this->entity->findOrFail($identify);
+    public function getCourse(string $slug){
+        return  $this->entity->where('slug',$slug)->first();
     }
 }

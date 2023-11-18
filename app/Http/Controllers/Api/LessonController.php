@@ -21,8 +21,8 @@ class LessonController extends Controller
         return LessonResource::collection($this->repository->getLessonsModuleById($moduleId));
     }
 
-    public function show($lessonId)
+    public function show($slug)
     {
-        return new LessonResource($this->repository->getLessonById($lessonId));
+        return new LessonResource($this->repository->getLessonBySlug($slug));
     }
 }

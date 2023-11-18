@@ -18,7 +18,6 @@ class LessonFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->name(),
-            'url' => $this->faker->unique()->url(),
             'description' => $this->faker->sentence(),
             'video' => $this->faker->unique()->url(),
         ];
