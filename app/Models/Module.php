@@ -23,4 +23,14 @@ class Module extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    /**
+     * Get all of the lessons for the Module
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
+    }
 }
