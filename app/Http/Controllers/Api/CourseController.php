@@ -21,8 +21,8 @@ class CourseController extends Controller
         return CourseResource::collection($this->repository->getAllCourses());
     }
 
-    public function show($slug)
+    public function show($id)
     {
-        return new CourseResource($this->repository->getCourse($slug));
+        return new CourseResource($this->repository->getCourse($id));
     }
 }

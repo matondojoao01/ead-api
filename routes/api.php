@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('courses')->group(function () {
     Route::get('/', [CourseController::class, 'index']);
-    Route::get('/{slug}', [CourseController::class, 'show']);
+    Route::get('/{id}', [CourseController::class, 'show']);
     Route::get('/{id}/modules', [ModuleController::class, 'index']);
 });
 
@@ -17,5 +17,9 @@ Route::controller(LessonController::class)->prefix('modules')->group(function ()
 });
 
 Route::controller(LessonController::class)->prefix('lessons')->group(function () {
-    Route::get('/{slug}', 'show');
+    Route::get('/{id}', 'show');
+});
+
+Route::controller(LessonController::class)->prefix('lessons')->group(function () {
+    Route::get('/{id}/supports', 'index');
 });
