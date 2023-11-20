@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Support;
+use App\Models\User;
 
 class SupportRepository
 {
@@ -13,8 +14,26 @@ class SupportRepository
         $this->entity = $model;
     }
 
-    public function getSupports(string $lessonId)
+    public function getSupports(array $filters = [])
     {
-        return $this->entity->where('lesson_id', $lessonId)->get();
+        return $this->getUserAuth()->supports()->where(function ($query) use ($filters) {
+            if (isset($filters['lesson'])) {
+                $query->where('lesson_id', $filters['lesson']);
+            }
+            if (isset($filters['status'])) {
+                $query->where('status', $filters['status']);
+            }
+            if (isset($filters['filter'])) {
+                $filter = $filters['filter'];
+                $query->where('description', 'LIKE', "%{$filter}%");
+            }
+        })->get();
+    }
+
+    private function getUserAuth(): User
+    {
+        //    return auth('api')->user();
+
+        return User::first();
     }
 }

@@ -19,4 +19,24 @@ class Support extends Model
     public $statusOptions = [
         'P' => 'Pendente, Aguardando Professor', 'A' => 'Aguardando Aluno', 'C' => 'Finalizado'
     ];
+
+    /**
+     * Get the user that owns the Support
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the lesson that owns the Support
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
 }

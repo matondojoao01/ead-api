@@ -14,7 +14,7 @@ class Lesson extends Model
 
     public $incrementing = false;
     protected $keyType = 'uuid';
-    protected $fillable = ['name','description', 'video','slug'];
+    protected $fillable = ['name', 'description', 'video', 'slug'];
 
     /**
      * Get the module that owns the Lesson
@@ -24,6 +24,16 @@ class Lesson extends Model
     public function module()
     {
         return $this->belongsTo(Module::class);
+    }
+
+    /**
+     * Get all of the supports for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function supports()
+    {
+        return $this->hasMany(Support::class);
     }
 
     public function getSlugOptions(): SlugOptions

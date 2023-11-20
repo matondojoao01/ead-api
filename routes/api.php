@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\LessonController;
 use App\Http\Controllers\Api\ModuleController;
+use App\Http\Controllers\Api\SupportController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,6 +21,6 @@ Route::controller(LessonController::class)->prefix('lessons')->group(function ()
     Route::get('/{id}', 'show');
 });
 
-Route::controller(LessonController::class)->prefix('lessons')->group(function () {
-    Route::get('/{id}/supports', 'index');
+Route::controller(SupportController::class)->prefix('supports')->group(function () {
+    Route::get('/', 'index');
 });

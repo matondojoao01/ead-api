@@ -13,9 +13,11 @@ class SupportController extends Controller
 
     public function __construct(SupportRepository $SupportRepository)
     {
-        $this->repository=$SupportRepository;
+        $this->repository = $SupportRepository;
     }
-    public function index(Request $request){
-        return SupportResource::collection($this->repository->getSupports());
+    public function index(Request $request)
+    {
+        $supports = $this->repository->getSupports($request->all());
+        return SupportResource::collection($supports);
     }
 }
