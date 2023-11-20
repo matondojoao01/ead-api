@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
         foreach ($modules as $module) {
             $module->lessons()->saveMany(\App\Models\Lesson::factory()->count(10)->make());
         }
+
+        \App\Models\Support::factory()->count(10)->create();
     }
 }
