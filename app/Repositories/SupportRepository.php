@@ -30,6 +30,10 @@ class SupportRepository
         })->get();
     }
 
+    public function createNewSupport(array $data): Support
+    {
+        return $this->getUserAuth()->supports()->create(['lesson_id'=>$data['lesson'],'status'=>$data['status'],'description'=>$data['description']]);
+    }
     private function getUserAuth(): User
     {
         //    return auth('api')->user();
