@@ -24,4 +24,5 @@ Route::controller(LessonController::class)->prefix('lessons')->group(function ()
 Route::controller(SupportController::class)->prefix('supports')->group(function () {
     Route::get('/', 'index');
     Route::post('/', 'store');
+    Route::post('/{id}/replies', 'createReply');
 });

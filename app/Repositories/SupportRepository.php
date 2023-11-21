@@ -32,8 +32,20 @@ class SupportRepository
 
     public function createNewSupport(array $data): Support
     {
-        return $this->getUserAuth()->supports()->create(['lesson_id'=>$data['lesson'],'status'=>$data['status'],'description'=>$data['description']]);
+        return $this->getUserAuth()->supports()->create(['lesson_id' => $data['lesson'], 'status' => $data['status'], 'description' => $data['description']]);
     }
+
+    public function createReplyToSupportId(array $data, $supportId)
+    {
+        return $this->getSupport($supportId)->replies()->create([
+            'user_id' => $this->getUserAuth()->id, 'description' => $data['description']
+        ]);
+    }
+    private function getSupport(string $id): Support
+    {
+        return $this->entity->findOrFail($id);
+    }
+
     private function getUserAuth(): User
     {
         //    return auth('api')->user();

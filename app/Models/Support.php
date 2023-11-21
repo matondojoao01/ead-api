@@ -39,4 +39,14 @@ class Support extends Model
     {
         return $this->belongsTo(Lesson::class);
     }
+
+    /**
+     * Get all of the replies for the Support
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function replies()
+    {
+        return $this->hasMany(ReplySupport::class);
+    }
 }
