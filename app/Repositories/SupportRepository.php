@@ -27,7 +27,7 @@ class SupportRepository
                 $filter = $filters['filter'];
                 $query->where('description', 'LIKE', "%{$filter}%");
             }
-        })->get();
+        })->orderBy('updated_at')->get();
     }
 
     public function createNewSupport(array $data): Support

@@ -22,6 +22,7 @@ class SupportResource extends JsonResource
             'user' => new UserResource($this->user),
             'lesson' => new LessonResource($this->lesson),
             'replies' => ReplayResoure::collection($this->replies),
+            'updated_at' => $this->updated_at
         ];
     }
 }
