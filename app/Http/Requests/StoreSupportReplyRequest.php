@@ -25,12 +25,15 @@ class StoreSupportReplyRequest extends FormRequest
     {
         return [
             'description'=>['required'],
+            'support'=>['required','exists:supports,id'],
         ];
     }
     public function messages()
     {
         return [
             'description.required'=>'The description field is required',
+            'support.required'=>'The support field is required',
+            'support.exists' => 'The selected support does not exist',
         ];
     }
 }
