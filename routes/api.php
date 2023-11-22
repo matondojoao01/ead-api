@@ -9,10 +9,14 @@ use App\Http\Controllers\Api\SupportController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function () {
-    Route::post('/', [AuthController::class, 'auth']);
+    Route::post('/login', [AuthController::class, 'login']);
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+
+    Route::prefix('auth')->group(function () {
+        Route::post('/logout', [AuthController::class, 'logout']);
+    });
 
     Route::prefix('courses')->group(function () {
         Route::get('/', [CourseController::class, 'index']);

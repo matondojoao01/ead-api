@@ -14,17 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $courses = \App\Models\Course::all();
+        $courses = \App\Models\Course::all();
 
-        // foreach ($courses as $course) {
-        //     $course->modules()->saveMany(\App\Models\Module::factory()->count(5)->make());
-        // }
+        foreach ($courses as $course) {
+            $course->modules()->saveMany(\App\Models\Module::factory()->count(5)->make());
+        }
 
-        // $modules = \App\Models\Module::all();
+        $modules = \App\Models\Module::all();
 
-        // foreach ($modules as $module) {
-        //     $module->lessons()->saveMany(\App\Models\Lesson::factory()->count(10)->make());
-        // }
+        foreach ($modules as $module) {
+            $module->lessons()->saveMany(\App\Models\Lesson::factory()->count(10)->make());
+        }
 
         \App\Models\Support::factory()->count(10)->create();
     }
