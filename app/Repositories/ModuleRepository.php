@@ -3,10 +3,12 @@
 namespace App\Repositories;
 
 use App\Models\Module;
+use Illuminate\Support\Facades\Cache;
 
 class ModuleRepository
 {
     private $entity;
+    private $time = 5;
 
     public function __construct(Module $model)
     {
@@ -15,6 +17,8 @@ class ModuleRepository
 
     public function getModulesCourseById(string $courseId)
     {
-        return $this->entity->where('course_id', $courseId)->get();
+        return Cache::remember('getlessonmodulebyid', $this->time, function () use ($courseId) {
+            return $this->entity->where('course_id', $courseId)->get();
+        });
     }
 }

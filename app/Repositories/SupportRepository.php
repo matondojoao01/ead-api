@@ -4,12 +4,14 @@ namespace App\Repositories;
 
 use App\Models\Support;
 use App\Repositories\Traits\RepositoryTrait;
+use Illuminate\Support\Facades\Cache;
 
 class SupportRepository
 {
     use RepositoryTrait;
 
     private $entity;
+    private $time = 5;
 
     public function __construct(Support $model)
     {
@@ -23,22 +25,25 @@ class SupportRepository
 
     public function getSupports(array $filters = [])
     {
-        return $this->entity->where(function ($query) use ($filters) {
-            if (isset($filters['lesson'])) {
-                $query->where('lesson_id', $filters['lesson']);
-            }
-            if (isset($filters['status'])) {
-                $query->where('status', $filters['status']);
-            }
-            if (isset($filters['filter'])) {
-                $filter = $filters['filter'];
-                $query->where('description', 'LIKE', "%{$filter}%");
-            }
-            if (isset($filters['user'])) {
-                $user =  $this->getUserAuth();
-                $query->where('user_id', $user->id);
-            }
-        })->orderBy('updated_at')->get();
+
+        return Cache::remember('getallcourses', $this->time, function () use ($filters) {
+            return $this->entity->where(function ($query) use ($filters) {
+                if (isset($filters['lesson'])) {
+                    $query->where('lesson_id', $filters['lesson']);
+                }
+                if (isset($filters['status'])) {
+                    $query->where('status', $filters['status']);
+                }
+                if (isset($filters['filter'])) {
+                    $filter = $filters['filter'];
+                    $query->where('description', 'LIKE', "%{$filter}%");
+                }
+                if (isset($filters['user'])) {
+                    $user =  $this->getUserAuth();
+                    $query->where('user_id', $user->id);
+                }
+            })->orderBy('updated_at')->get();
+        });
     }
 
     public function createNewSupport(array $data): Support
