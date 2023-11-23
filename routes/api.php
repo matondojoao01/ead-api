@@ -14,6 +14,7 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLink'])->middleware('guest');
+Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->middleware('guest');
 
 Route::middleware('auth:sanctum')->group(function () {
 
