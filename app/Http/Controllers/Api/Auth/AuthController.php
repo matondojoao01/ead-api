@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthRequest;
+use App\Http\Resources\UserResource;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -39,5 +40,12 @@ class AuthController extends Controller
         $user->tokens()->delete();
 
         return response()->json(['message' => 'Logout successfully'], 200);
+    }
+
+    public function me(Request $request)
+    {
+        $me = auth()->user();
+
+        return new UserResource($me);
     }
 }
