@@ -15,6 +15,8 @@ class ResetPasswordController extends Controller
     {
         $request->validate([
             'email' => 'required|email'
+        ],[
+            'email.required' => 'The email field is required.',
         ]);
 
         $status = Password::sendResetLink($request->only('email'));
@@ -30,6 +32,13 @@ class ResetPasswordController extends Controller
             'token' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:6|max:15'
+        ], [
+            'token.required' => 'The token field is required.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'The email must be a valid email address.',
+            'password.required' => 'The password field is required.',
+            'password.min' => 'The password must be at least :min characters.',
+            'password.max' => 'The password may not be greater than :max characters.',
         ]);
 
         $status = Password::reset(
@@ -46,7 +55,7 @@ class ResetPasswordController extends Controller
         );
 
         return $status === Password::PASSWORD_RESET
-            ?  response()->json(['status' => __($status)])
-            : response()->json(['email' => __($status)], 422);
+            ?  response()->json(['status' => 'Password reset successfully'])
+            : response()->json(['email' => 'Unable to reset password'], 422);
     }
 }
