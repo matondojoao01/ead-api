@@ -31,7 +31,7 @@ class ResetPasswordController extends Controller
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:6|max:15'
+            'password' => 'required|min:6|max:30'
         ], [
             'token.required' => 'The token field is required.',
             'email.required' => 'The email field is required.',
