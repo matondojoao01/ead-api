@@ -35,8 +35,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{id}/lessons', 'index');
     });
 
+
     Route::controller(LessonController::class)->prefix('lessons')->group(function () {
         Route::get('/{id}', 'show');
+        Route::post('/viewed', 'viewed');
     });
 
     Route::controller(SupportController::class)->prefix('supports')->group(function () {

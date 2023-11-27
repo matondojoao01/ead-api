@@ -42,4 +42,18 @@ class Lesson extends Model
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
+
+    /**
+     * Get all of the views for the Lesson
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function views()
+    {
+        return $this->hasMany(View::class)->where(function ($query) {
+            if (auth()->check()) {
+                return $query->where('user_id', auth()->user()->id);
+            }
+        });
+    }
 }

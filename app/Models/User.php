@@ -66,4 +66,14 @@ class User extends Authenticatable
     {
        $this->notify(new ResetPasswordNotification($token));
     }
+
+    /**
+     * Get all of the views for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function views()
+    {
+        return $this->hasMany(View::class);
+    }
 }
