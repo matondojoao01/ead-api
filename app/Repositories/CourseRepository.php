@@ -18,7 +18,7 @@ class CourseRepository
     public function getAllCourses()
     {
         return Cache::remember('getallcourses', $this->time, function () {
-            return $this->entity->get();
+            return $this->entity->with('modules.lessons.views')->get();
         });
     }
 

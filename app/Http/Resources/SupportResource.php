@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Helpers\ptBRHelper;
 
 class SupportResource extends JsonResource
 {
@@ -20,9 +21,9 @@ class SupportResource extends JsonResource
             'status_label' => $this->statusOptions[$this->status],
             'description' => $this->description,
             'user' => new UserResource($this->user),
-            'lesson' => new LessonResource($this->lesson),
-            'replies' => ReplayResoure::collection($this->replies),
-            'updated_at' => $this->updated_at
+            'lesson' => new LessonResource($this->whenLoaded('lesson')),
+            'replies' => ReplayResoure::collection($this->whenLoaded('replies')),
+            'updated_at' => ptBRHelper::data($this->updated_at)
         ];
     }
 }

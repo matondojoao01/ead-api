@@ -21,7 +21,7 @@ class LessonRepository
     public function getLessonsModuleById(string $identify)
     {
         return Cache::remember('getlessonmodulebyid', $this->time, function () use ($identify) {
-            return  $this->entity->where('module_id', $identify)->get();
+            return  $this->entity->where('module_id', $identify)->with('supports.replies')->get();
         });
     }
 

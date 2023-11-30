@@ -18,7 +18,7 @@ class ModuleRepository
     public function getModulesCourseById(string $courseId)
     {
         return Cache::remember('getlessonmodulebyid', $this->time, function () use ($courseId) {
-            return $this->entity->where('course_id', $courseId)->get();
+            return $this->entity->with('lessons.views')->where('course_id', $courseId)->get();
         });
     }
 }
