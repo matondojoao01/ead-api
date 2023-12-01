@@ -29,4 +29,14 @@ class AuthRequest extends FormRequest
             'device_name' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'email.required' => 'The email field is required.',
+            'email.email' => 'The email must be a valid email address.',
+            'password.required' => 'The password field is required.',
+            'device_name.required' => 'The device name field is required.',
+        ];
+    }
 }
