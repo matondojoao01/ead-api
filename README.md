@@ -55,7 +55,8 @@ Built on Laravel, E-Learning Platform API empowers your E-Learning platform with
 4. Run migrations: `php artisan migrate`
 5. Start the development server: `php artisan serve`
 
-For detailed API documentation, visit [API Documentation](https://documenter.getpostman.com/view/23770036/2s9YeK4ALj).
+For detailed API documentation, visit <a href="https://documenter.getpostman.com/view/23770036/2s9YeK4ALj" target="_blank">API Documentation</a>.
+
 
 ---
 
