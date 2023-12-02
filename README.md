@@ -14,7 +14,7 @@ Built on Laravel, E-Learning Platform API empowers your E-Learning platform with
 ### Modules
 
 #### 1. Account Details
-- View and manage user account details .
+- View and manage user account details.
 
 #### 2. Authentication
 - Secure user authentication using Laravel Sanctum.
