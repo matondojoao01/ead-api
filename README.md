@@ -1,12 +1,8 @@
-<h1 align="center">
+<h1 align="justify">
 REST API for E-Learning Platform
 </h1>
 
-<h5 align="center">
-REST API for E-Learning Platform with integrated admin panel.
-</h5>
-
-<p align="center">
+<p align="justify">
 Built on Laravel, E-Learning Platform API empowers your E-Learning platform with essential modules such as Account Details, Authentication, Courses, Lessons Operations, Modules Management, Password Recovery, and Support and Reply.
 
 **Authentication:** E-Learning Platform uses Sanctum for secure authentication. For testing in Postman, refer to the [API Documentation](https://laravel.com/docs/9.x/sanctum#main-content) on how to authenticate using Sanctum.
