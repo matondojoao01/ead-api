@@ -55,17 +55,13 @@ Built on Laravel, E-Learning Platform API empowers your E-Learning platform with
 4. Run migrations: `php artisan migrate`
 5. Start the development server: `php artisan serve`
 
-Explore the API documentation and admin panel to harness the full potential of LaraEdu for your E-Learning platform.
-
-For detailed API documentation, visit [API Documentation](#).
+For detailed API documentation, visit [API Documentation](https://documenter.getpostman.com/view/23770036/2s9YeK4ALj).
 
 ---
 
 ### Contributors
 
-- [Your Name](https://github.com/yourusername)
-- [Contributor 1](https://github.com/contributor1)
-- [Contributor 2](https://github.com/contributor2)
+- [Matondo João](https://github.com/matondojoao)
 
-Feel free to contribute and make LaraEdu even better!
+Feel free to contribute and make E-Learning Platform API even better!
 </p>
