@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Helpers\ptBRHelper;
 
 class ReplayResoure extends JsonResource
 {
@@ -16,7 +17,9 @@ class ReplayResoure extends JsonResource
     {
         return[
             'id' => $this->id,
-            'description' => $this->description
+            'description' => $this->description,
+            'user' => new UserResource($this->user),
+            'updated_at' => ptBRHelper::data($this->updated_at)
         ];
     }
 }

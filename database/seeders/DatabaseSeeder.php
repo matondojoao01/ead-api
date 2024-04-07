@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Course::factory()->count(10)->create();
+        /*\App\Models\Course::factory()->count(10)->create();
 
         $courses = \App\Models\Course::all();
 
@@ -26,8 +26,20 @@ class DatabaseSeeder extends Seeder
 
         foreach ($modules as $module) {
             $module->lessons()->saveMany(\App\Models\Lesson::factory()->count(10)->make());
+        }*/
+
+        // $lessons = \App\Models\Lesson::all();
+
+        // foreach ($lessons as $lesson) {
+        //     $lesson->supports()->saveMany(\App\Models\Support::factory()->count(5)->make());
+        // }
+
+        $supports = \App\Models\Support::all();
+
+        foreach ($supports as $support) {
+            $support->replies()->saveMany(\App\Models\ReplySupport::factory()->count(2)->make());
         }
 
-        \App\Models\Support::factory()->count(10)->create();
+        //\App\Models\Support::factory()->count(10)->create();
     }
 }

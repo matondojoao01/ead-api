@@ -14,7 +14,7 @@ class Course extends Model
 
     public $incrementing = false;
     protected $keyType = 'uuid';
-    protected $fillable = ['name', 'description', 'image','slug'];
+    protected $fillable = ['id,','name', 'description', 'image','slug'];
     protected $table = 'courses';
 
     /**
