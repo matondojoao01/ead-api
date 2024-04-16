@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         $supports = \App\Models\Support::all();
 
         foreach ($supports as $support) {
-            $support->replies()->saveMany(\App\Models\ReplySupport::factory()->count(2)->make());
+            $support->replies()->saveMany(\App\Models\ReplySupport::factory()->count(5)->make());
         }
 
         //\App\Models\Support::factory()->count(10)->create();
